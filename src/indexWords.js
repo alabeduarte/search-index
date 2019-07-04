@@ -1,18 +1,18 @@
-const findChildren = (node, [head, ...tail]) => {
+const findChildren = (subTree, [head, ...tail]) => {
   if (head === undefined) return {};
 
-  if (node[head] !== undefined) {
+  if (subTree[head] !== undefined) {
     return {
       [head]: {
-        ...node[head],
-        ...findChildren(node[head], tail),
+        ...subTree[head],
+        ...findChildren(subTree[head], tail),
       },
     };
   }
 
   return {
     [head]: {
-      ...findChildren(node, tail),
+      ...findChildren(subTree, tail),
     },
   };
 };
